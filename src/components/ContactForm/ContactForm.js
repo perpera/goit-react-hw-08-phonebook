@@ -1,8 +1,8 @@
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { addContact } from '../../redux/operations';
-import { selectContacts } from '../../redux/selectors';
+import { addContact } from '../../redux/contacts/operations';
+import { selectContacts } from '../../redux/contacts/selectors';
 import {
   FormStyle,
   FormButton,
@@ -33,7 +33,7 @@ export const ContactForm = () => {
         );
         if (isAdded) {
           actions.resetForm();
-          toast.error(`${values.name} is already in your contacts.`);
+          return toast.error(`${values.name} is already in your contacts.`);
         }
         dispatch(addContact(values));
         actions.resetForm();
